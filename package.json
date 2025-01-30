@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
