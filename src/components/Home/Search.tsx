@@ -1,14 +1,25 @@
 import { useSearchParams } from 'react-router';
-// import { HomePageLoaderData } from "@/utils/loaders";
-// import { useLoaderData } from "react-router";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import useDebounce from '@/hooks/useDebounce';
 
 export default function Search() {
-  // const { totalPages, page } = useLoaderData() as HomePageLoaderData;
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchTerm, setSearchTerm] = useState(
-    searchParams.get('search') || ''
-  );
+  const [searchTerm, setSearchTerm] = useState(searchParams.get('q') || '');
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  useEffect(() => {
+    if (debouncedSearchTerm !== searchParams.get('q')) {
+      setSearchParams(
+        (prev) => {
+          const newParams = new URLSearchParams(prev);
+          newParams.set('q', debouncedSearchTerm);
+          newParams.set('page', '1');
+          return newParams;
+        },
+        { replace: true }
+      );
+    }
+  }, [debouncedSearchTerm, setSearchParams, searchParams]);
 
   return (
     <input
@@ -17,14 +28,6 @@ export default function Search() {
       value={searchTerm}
       onChange={(e) => {
         setSearchTerm(e.target.value);
-        setSearchParams(
-          (prev) => {
-            prev.set('q', e.target.value);
-            prev.set('page', '1');
-            return prev;
-          },
-          { replace: true }
-        );
       }}
     />
   );
