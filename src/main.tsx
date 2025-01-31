@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
+import { homePageLoader } from '@utils/loaders';
 import Layout from '@components/Layout';
 import Home from '@pages/Home';
 import Details from '@pages/Details';
@@ -16,14 +17,18 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader: homePageLoader,
+        errorElement: <Error />,
       },
       {
         path: '/details/:artworkId',
         element: <Details />,
+        errorElement: <Error />,
       },
       {
         path: '/favourites',
         element: <Favourites />,
+        errorElement: <Error />,
       },
     ],
   },
