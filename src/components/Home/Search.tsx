@@ -11,10 +11,9 @@ export default function Search() {
     if (debouncedSearchTerm !== searchParams.get('q')) {
       setSearchParams(
         (prev) => {
-          const newParams = new URLSearchParams(prev);
-          newParams.set('q', debouncedSearchTerm);
-          newParams.set('page', '1');
-          return newParams;
+          prev.set('q', debouncedSearchTerm);
+          prev.set('page', '1');
+          return prev;
         },
         { replace: true }
       );
