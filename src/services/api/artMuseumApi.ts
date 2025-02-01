@@ -2,58 +2,74 @@ export interface Artwork {
   id: number;
   title: string;
   image_id: string;
-  artist_display: string;
+  artist_title: string;
   is_public_domain: boolean;
 }
 
 interface ArtworksResponse {
-  pagination: Pagination;
   data: Artwork[];
-  config: ArtworkConfig;
-}
-
-interface Pagination {
-  total: number;
-  limit: number;
-  offset: number;
-  total_pages: number;
-  current_page: number;
-}
-
-interface ArtworkConfig {
-  iiif_url: string;
-  website_url: string;
+  pagination: {
+    total: number;
+    limit: number;
+    offset: number;
+    total_pages: number;
+    current_page: number;
+  };
+  config: {
+    iiif_url: string;
+    website_url: string;
+  };
 }
 
 interface FetchArtworksParams {
   searchTerm: string;
   itemsPerPage: number;
-  page: number;
+  offset: number;
+  sortBy: string;
+  fields: string;
 }
 
-const API_URL = 'https://api.artic.edu/api/v1/artworks';
+const BASE_URL = 'https://api.artic.edu/api/v1/artworks';
 
-export async function fetchArtworks({
-  searchTerm,
-  itemsPerPage,
-  page,
-}: FetchArtworksParams): Promise<ArtworksResponse> {
-  const offset = (page - 1) * itemsPerPage;
-  const queryParams = new URLSearchParams({
-    size: String(itemsPerPage),
-    from: String(offset),
-    fields: 'id,title,image_id,artist_display,is_public_domain',
-  });
+// Fetches filtered artwork data
+export async function fetchArtworks(
+  params: FetchArtworksParams
+): Promise<ArtworksResponse> {
+  const queryParams = buildQueryParams(params);
 
-  if (searchTerm.length > 0) {
-    queryParams.append('query[term][title]', searchTerm);
-  }
-
-  const response = await fetch(`${API_URL}/search?${queryParams}`);
+  const response = await fetch(`${BASE_URL}/search?${queryParams}`);
 
   if (!response.ok) {
     throw new Response('API request failed', { status: response.status });
   }
 
   return (await response.json()) as ArtworksResponse;
+}
+
+// Constructs URL search parameters based on filters
+function buildQueryParams(params: FetchArtworksParams) {
+  const { searchTerm, itemsPerPage, offset, sortBy, fields } = params;
+
+  const queryParams = new URLSearchParams({
+    size: String(itemsPerPage),
+    from: String(offset),
+    fields: fields,
+  });
+
+  if (searchTerm !== '') {
+    queryParams.append('query[term][title]', searchTerm);
+  }
+  switch (sortBy) {
+    case 'title':
+      queryParams.append('sort[title.keyword]', 'asc');
+      break;
+    case 'date':
+      queryParams.append('sort[date_start]', 'desc');
+      break;
+    case 'artist':
+      queryParams.append('sort[artist_title.keyword]', 'asc');
+      break;
+  }
+
+  return queryParams;
 }

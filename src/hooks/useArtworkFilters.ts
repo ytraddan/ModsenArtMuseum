@@ -4,6 +4,7 @@ import { useCallback } from 'react';
 export type ArtworkFilters = {
   search?: string;
   page?: string;
+  sort?: string;
 };
 
 export function useArtworkFilters() {
@@ -11,22 +12,27 @@ export function useArtworkFilters() {
 
   const search = searchParams.get('search') || undefined;
   const page = searchParams.get('page') || undefined;
+  const sort = searchParams.get('sort') || undefined;
 
   const setFilters = useCallback(
     (filters: ArtworkFilters) => {
       setSearchParams(
         (prev) => {
+          prev.delete('page');
+
           if (filters.search === '') {
             prev.delete('search');
-            prev.delete('page');
           } else if (filters.search) {
             prev.set('search', filters.search);
-            prev.delete('page');
           }
 
-          if (filters.page === '1') {
-            prev.delete('page');
-          } else if (filters.page) {
+          if (filters.sort === '') {
+            prev.delete('sort');
+          } else if (filters.sort) {
+            prev.set('sort', filters.sort);
+          }
+
+          if (filters.page && filters.page !== '1') {
             prev.set('page', filters.page);
           }
 
@@ -39,6 +45,7 @@ export function useArtworkFilters() {
   );
 
   const currentPage = page ? parseInt(page) : 1;
+  const currentSort = sort || '';
 
-  return { search, page: currentPage, setFilters };
+  return { search, sort: currentSort, page: currentPage, setFilters };
 }

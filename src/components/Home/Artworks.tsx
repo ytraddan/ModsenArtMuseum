@@ -24,10 +24,9 @@ export default function Artworks() {
             <img
               src={`${iiifUrl}/${artwork.image_id}/${options}`}
               alt={artwork.title}
-              style={{ maxWidth: '100%', height: 'auto' }}
             />
           )}
-          <p>{artwork.artist_display}</p>
+          <p>{artwork.artist_title}</p>
           <p>{artwork.is_public_domain ? 'Public ' : 'Copyrighted'}</p>
         </div>
       ))}
