@@ -1,3 +1,5 @@
+import { BASE_URL } from '@/constants/chicagoArtApi';
+
 export interface Artwork {
   id: number;
   title: string;
@@ -29,14 +31,11 @@ interface FetchArtworksParams {
   fields: string;
 }
 
-const BASE_URL = 'https://api.artic.edu/api/v1/artworks';
-
 // Fetches filtered artwork data
 export async function fetchArtworks(
   params: FetchArtworksParams
 ): Promise<ArtworksResponse> {
   const queryParams = buildQueryParams(params);
-
   const response = await fetch(`${BASE_URL}/search?${queryParams}`);
 
   if (!response.ok) {
@@ -51,14 +50,12 @@ function buildQueryParams(params: FetchArtworksParams) {
   const { searchTerm, itemsPerPage, offset, sortBy, fields } = params;
 
   const queryParams = new URLSearchParams({
+    q: searchTerm,
     size: String(itemsPerPage),
     from: String(offset),
     fields: fields,
   });
 
-  if (searchTerm !== '') {
-    queryParams.append('query[term][title]', searchTerm);
-  }
   switch (sortBy) {
     case 'title':
       queryParams.append('sort[title.keyword]', 'asc');

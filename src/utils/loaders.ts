@@ -1,5 +1,6 @@
 import { LoaderFunctionArgs } from 'react-router';
-import { fetchArtworks } from '@services/api/artMuseumApi';
+import { fetchArtworks } from '@/services/api/chicagoArtApi';
+import { ITEMS_PER_PAGE } from '@/constants/chicagoArtApi';
 
 interface URLParams {
   offset: number;
@@ -7,8 +8,7 @@ interface URLParams {
   sortBy: string;
 }
 
-const ITEMS_PER_PAGE = 3;
-const FIELDS = 'id,title,image_id,artist_title,is_public_domain';
+const HOME_PAGE_FIELDS = 'id,title,image_id,artist_title,is_public_domain';
 
 export async function homePageLoader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
@@ -19,7 +19,7 @@ export async function homePageLoader({ request }: LoaderFunctionArgs) {
     searchTerm,
     sortBy,
     itemsPerPage: ITEMS_PER_PAGE,
-    fields: FIELDS,
+    fields: HOME_PAGE_FIELDS,
   });
 
   console.log(artworksData);
