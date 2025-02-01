@@ -1,9 +1,10 @@
 import { HomePageLoaderData } from '@/utils/loaders';
-import { useLoaderData, useSearchParams } from 'react-router';
+import { useLoaderData } from 'react-router';
+import { useArtworkFilters } from '@hooks/useArtworkFilters';
 
 export default function Pagination() {
-  const { totalPages, page } = useLoaderData() as HomePageLoaderData;
-  const [, setSearchParams] = useSearchParams();
+  const { totalPages } = useLoaderData() as HomePageLoaderData;
+  const { setFilters, page } = useArtworkFilters();
 
   if (totalPages === 0) {
     return null;
@@ -12,15 +13,7 @@ export default function Pagination() {
   return (
     <div>
       <button
-        onClick={() =>
-          setSearchParams(
-            (prev) => {
-              prev.set('page', `${page - 1}`);
-              return prev;
-            },
-            { replace: true }
-          )
-        }
+        onClick={() => setFilters({ page: `${page - 1}` })}
         disabled={page === 1}
       >
         Previous
@@ -29,15 +22,7 @@ export default function Pagination() {
         {page} of {totalPages}
       </span>
       <button
-        onClick={() =>
-          setSearchParams(
-            (prev) => {
-              prev.set('page', `${page + 1}`);
-              return prev;
-            },
-            { replace: true }
-          )
-        }
+        onClick={() => setFilters({ page: `${page + 1}` })}
         disabled={page >= totalPages}
       >
         Next

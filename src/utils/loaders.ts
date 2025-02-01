@@ -15,7 +15,7 @@ export async function homePageLoader({
 }: LoaderFunctionArgs): Promise<HomePageData> {
   const url = new URL(request.url);
   const page = parseInt(url.searchParams.get('page') || '1');
-  const searchTerm = url.searchParams.get('q') || '';
+  const searchTerm = url.searchParams.get('search') || '';
 
   const artworksData = await fetchArtworks({
     page,
