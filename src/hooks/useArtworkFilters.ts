@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router';
 import { useCallback } from 'react';
 
-export type ArtworkFilters = {
+type ArtworkFilters = {
   search?: string;
   page?: string;
   sort?: string;
@@ -16,6 +16,12 @@ export function useArtworkFilters() {
 
   const setFilters = useCallback(
     (filters: ArtworkFilters) => {
+      if (filters.search === search) {
+        return;
+      }
+      if (filters.search === '' && search === undefined) {
+        return;
+      }
       setSearchParams(
         (prev) => {
           prev.delete('page');
@@ -41,7 +47,7 @@ export function useArtworkFilters() {
         { replace: true }
       );
     },
-    [setSearchParams]
+    [setSearchParams, search]
   );
 
   const currentPage = page ? parseInt(page) : 1;

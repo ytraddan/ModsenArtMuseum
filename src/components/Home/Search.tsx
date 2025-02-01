@@ -1,21 +1,21 @@
-import { useArtworkFilters } from '@hooks/useArtworkFilters';
-import { useDebouncedSearch } from '@hooks/useDebouncedSearch';
+import { useSearchForm } from '@/hooks/useSearchForm';
 
 export default function Search() {
-  const { sort, setFilters } = useArtworkFilters();
-  const [searchTerm, setSearchTerm] = useDebouncedSearch();
+  const { register, errors, isValid, handleSortChange } = useSearchForm();
 
   return (
-    <div className="search-container">
+    <div>
       <input
         type="search"
         placeholder="Search artworks..."
-        value={searchTerm || ''}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        {...register('search')}
       />
+
       <select
-        value={sort}
-        onChange={(e) => setFilters({ sort: e.target.value })}
+        disabled={!isValid}
+        {...register('sort', {
+          onChange: (e) => handleSortChange(e.target.value),
+        })}
       >
         <option disabled>-- Sort By --</option>
         <option value="">Default</option>
@@ -23,6 +23,9 @@ export default function Search() {
         <option value="date">Date</option>
         <option value="artist">Artist</option>
       </select>
+
+      {errors.search && <span>{errors.search.message}</span>}
+      {errors.sort && <span>{errors.sort.message}</span>}
     </div>
   );
 }
