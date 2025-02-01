@@ -16,11 +16,13 @@ export function useArtworkFilters() {
 
   const setFilters = useCallback(
     (filters: ArtworkFilters) => {
-      if (filters.search === search) {
-        return;
-      }
-      if (filters.search === '' && search === undefined) {
-        return;
+      if (filters.search !== undefined) {
+        if (filters.search === search) {
+          return;
+        }
+        if (filters.search === '' && search === undefined) {
+          return;
+        }
       }
       setSearchParams(
         (prev) => {
