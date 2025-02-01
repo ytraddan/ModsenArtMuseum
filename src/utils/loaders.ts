@@ -1,28 +1,18 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { fetchArtworks } from '@/services/api/chicagoArtApi';
-import { ITEMS_PER_PAGE } from '@/constants/chicagoArtApi';
-
-interface URLParams {
-  offset: number;
-  searchTerm: string;
-  sortBy: string;
-}
-
-const HOME_PAGE_FIELDS = 'id,title,image_id,artist_title,is_public_domain';
+import { ITEMS_PER_PAGE, HOME_PAGE_FIELDS } from '@/constants/chicagoArtApi';
 
 export async function homePageLoader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
-  const { offset, searchTerm, sortBy } = getUrlParams(url);
+  const params = getUrlParams(url);
 
   const artworksData = await fetchArtworks({
-    offset,
-    searchTerm,
-    sortBy,
+    ...params,
     itemsPerPage: ITEMS_PER_PAGE,
     fields: HOME_PAGE_FIELDS,
   });
 
-  console.log(artworksData);
+  console.log(artworksData.data[0]?.title);
 
   return {
     artworks: artworksData.data,
@@ -33,7 +23,7 @@ export async function homePageLoader({ request }: LoaderFunctionArgs) {
 }
 
 // Processes URL search parameters
-function getUrlParams(url: URL): URLParams {
+function getUrlParams(url: URL) {
   const page = parseInt(url.searchParams.get('page') || '1');
   const searchTerm = url.searchParams.get('search') || '';
   const sortBy = url.searchParams.get('sort') || '';
