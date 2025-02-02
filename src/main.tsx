@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { homePageLoader, artworkPageLoader } from '@utils/loaders';
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { StrictMode } from 'react';
 import ArtworkDetails from '@pages/ArtworkDetails';
-import Favourites from '@pages/Favourites';
+import Favorites from '@pages/Favorites';
 import Loading from '@components/Loading';
 import Layout from '@components/Layout';
 import Error from '@pages/Error';
@@ -30,8 +30,8 @@ const router = createBrowserRouter([
             loader: artworkPageLoader,
           },
           {
-            path: '/favourites',
-            element: <Favourites />,
+            path: '/favorites',
+            element: <Favorites />,
           },
         ],
       },

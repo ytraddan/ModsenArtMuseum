@@ -1,12 +1,15 @@
-import { useLoaderData } from 'react-router';
+import { useLoaderData, Link } from 'react-router';
 import { artworkPageLoader } from '@utils/loaders';
+import FavoriteButton from '@components/FavoriteButton';
 
 const IMAGE_OPTIONS = 'full/600,/0/default.jpg';
 
 export default function ArtworkDetails() {
   const { artwork, iiifUrl } = useLoaderData<artworkPageLoader>();
+
   return (
     <div>
+      <Link to="/">← Back to Gallery</Link>
       {artwork.image_id && (
         <img
           src={`${iiifUrl}/${artwork.image_id}/${IMAGE_OPTIONS}`}
@@ -25,6 +28,7 @@ export default function ArtworkDetails() {
         {artwork.gallery_title && `, ${artwork.gallery_title}`}
       </p>
       <p>{artwork.is_public_domain ? 'Public ' : 'Copyrighted'}</p>
+      <FavoriteButton artwork={artwork} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { BASE_URL } from '@constants/chicagoArtApi';
 
-interface Artwork {
+export interface Artwork {
   id: number;
   title: string;
   image_id: string;

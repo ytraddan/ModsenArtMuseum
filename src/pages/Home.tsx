@@ -1,6 +1,6 @@
-import Pagination from '@components/Home/Pagination';
-import Artworks from '@components/Home/Artworks';
-import Search from '@components/Home/Search';
+import Pagination from '@components/home/Pagination';
+import Artworks from '@components/home/Artworks';
+import Search from '@components/home/Search';
 
 export default function Home() {
   return (

@@ -1,5 +1,6 @@
-import { homePageLoader } from '@utils/loaders';
 import { Link, useLoaderData, useNavigation } from 'react-router';
+import { homePageLoader } from '@utils/loaders';
+import FavoriteButton from '../FavoriteButton';
 
 const IMAGE_OPTIONS = 'full/200,/0/default.jpg';
 
@@ -29,6 +30,7 @@ export default function Artworks() {
           <p>{artwork.artist_title}</p>
           <p>{artwork.is_public_domain ? 'Public ' : 'Copyrighted'}</p>
           <Link to={`/artwork/${artwork.id}`}>details</Link>
+          <FavoriteButton artwork={artwork} />
         </div>
       ))}
     </div>
