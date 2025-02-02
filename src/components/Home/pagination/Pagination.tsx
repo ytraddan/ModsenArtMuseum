@@ -2,6 +2,7 @@ import { useArtworkFilters } from '@hooks/useArtworkFilters';
 import { homePageLoader } from '@utils/loaders';
 import { useLoaderData } from 'react-router';
 import { MAX_PAGES } from '@constants/chicagoArtApi';
+import './pagination.scss';
 
 export default function Pagination() {
   const { totalPages } = useLoaderData<homePageLoader>();
@@ -22,8 +23,11 @@ export default function Pagination() {
   };
 
   return (
-    <nav>
-      <button onClick={() => handlePageChange(page - 1)} hidden={page <= 4}>
+    <nav className="pagination">
+      <button
+        onClick={() => handlePageChange(rangeStart - 4)}
+        hidden={page <= 4}
+      >
         ←
       </button>
 
@@ -38,7 +42,7 @@ export default function Pagination() {
       ))}
 
       <button
-        onClick={() => handlePageChange(page + 1)}
+        onClick={() => handlePageChange(rangeStart + 4)}
         hidden={rangeStart + 4 > totalAllowedPages}
       >
         →

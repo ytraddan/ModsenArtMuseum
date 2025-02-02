@@ -1,15 +1,20 @@
 import { useSearchForm } from '@hooks/useSearchForm';
+import search from '@assets/search.svg';
+import './search.scss';
 
 export default function Search() {
   const { register, errors, isValid, handleSortChange } = useSearchForm();
 
   return (
-    <div>
-      <input
-        type="search"
-        placeholder="Search artworks..."
-        {...register('search')}
-      />
+    <div className="search">
+      <div className="search-input">
+        <input
+          type="search"
+          placeholder="Search Art, Artist, Work..."
+          {...register('search')}
+        />
+        <img className="search-icon" src={search} alt="Search" />
+      </div>
 
       <select
         disabled={!isValid}
@@ -24,8 +29,7 @@ export default function Search() {
         <option value="artist">Artist</option>
       </select>
 
-      {errors.search && <span>{errors.search.message}</span>}
-      {errors.sort && <span>{errors.sort.message}</span>}
+      {errors.search && <span className="error">{errors.search.message}</span>}
     </div>
   );
 }

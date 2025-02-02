@@ -1,0 +1,32 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-end;
+
+  button {
+    font-size: 1rem;
+    min-width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    padding: 0 8px;
+    color: #2e2e2e;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: #f9a551;
+      color: rgb(255, 255, 255);
+    }
+
+    &:disabled {
+      background-color: #f17900;
+      color: white;
+      cursor: default;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { FavoritesContext } from '@/contexts/FavoritesContext';
-import FavoriteButton from '@/components/FavoriteButton';
+import FavoriteButton from '@components/favoriteButton/FavoriteButton';
 import { useContext } from 'react';
 import { Link } from 'react-router';
 

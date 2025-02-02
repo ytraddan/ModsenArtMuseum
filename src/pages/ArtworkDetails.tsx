@@ -1,6 +1,6 @@
 import { useLoaderData, Link } from 'react-router';
 import { artworkPageLoader } from '@utils/loaders';
-import FavoriteButton from '@components/FavoriteButton';
+import FavoriteButton from '@components/favoriteButton/FavoriteButton';
 
 const IMAGE_OPTIONS = 'full/600,/0/default.jpg';
 

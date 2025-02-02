@@ -1,0 +1,84 @@
+.artworks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+
+  .artwork {
+    position: relative;
+    aspect-ratio: 1/1.2;
+
+    .artwork-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: box-shadow 0.2s;
+      border: 1px solid transparent;
+      transition: border 0.2s ease-in-out;
+      &:hover {
+        border: 1px solid #e0a449;
+      }
+    }
+
+    .artwork-info {
+      position: absolute;
+      width: 290px;
+      min-height: 80px;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.128);
+
+      .artwork-title {
+        margin: 0;
+        padding-bottom: 0.2rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #313131;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 20ch;
+        transition: color 0.2s ease;
+
+        &:hover {
+          text-decoration: none;
+          color: #c79c5c;
+        }
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .artist-title {
+        margin: 0;
+        font-size: 1rem;
+        color: #e0a449;
+      }
+
+      .copyright {
+        font-size: 1rem;
+        font-weight: bold;
+        padding-top: 1rem;
+        margin: 0;
+      }
+
+      button {
+        position: absolute;
+        transform: translateY(-50%);
+        right: 1.5rem;
+        top: 50%;
+      }
+    }
+  }
+}
+
+.no-artworks {
+  font-size: 2rem;
+  color: #313131;
+}
