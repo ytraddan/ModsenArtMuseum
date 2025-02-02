@@ -1,4 +1,4 @@
-import { useSearchForm } from '@/hooks/useSearchForm';
+import { useSearchForm } from '@hooks/useSearchForm';
 
 export default function Search() {
   const { register, errors, isValid, handleSortChange } = useSearchForm();
