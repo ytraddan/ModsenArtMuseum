@@ -1,10 +1,10 @@
-import { HomePageLoaderData } from '@/utils/loaders';
-import { useLoaderData, useNavigation } from 'react-router';
+import { homePageLoader } from '@utils/loaders';
+import { Link, useLoaderData, useNavigation } from 'react-router';
 
-const options = 'full/200,/0/default.jpg';
+const IMAGE_OPTIONS = 'full/200,/0/default.jpg';
 
 export default function Artworks() {
-  const { artworks, iiifUrl } = useLoaderData() as HomePageLoaderData;
+  const { artworks, iiifUrl } = useLoaderData<homePageLoader>();
   const navigation = useNavigation();
 
   if (navigation.state === 'loading') {
@@ -22,12 +22,13 @@ export default function Artworks() {
           <h2>{artwork.title}</h2>
           {artwork.image_id && (
             <img
-              src={`${iiifUrl}/${artwork.image_id}/${options}`}
+              src={`${iiifUrl}/${artwork.image_id}/${IMAGE_OPTIONS}`}
               alt={artwork.title}
             />
           )}
           <p>{artwork.artist_title}</p>
           <p>{artwork.is_public_domain ? 'Public ' : 'Copyrighted'}</p>
+          <Link to={`/artwork/${artwork.id}`}>details</Link>
         </div>
       ))}
     </div>
