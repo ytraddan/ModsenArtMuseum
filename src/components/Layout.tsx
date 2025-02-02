@@ -1,4 +1,4 @@
-import FavoritesProvider from '@/contexts/FavoritesProvider';
+import FavoritesProvider from '@/components/providers/FavoritesProvider';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 import { Outlet } from 'react-router';

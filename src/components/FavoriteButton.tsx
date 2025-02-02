@@ -5,6 +5,7 @@ import { Artwork } from '@/services/api/chicagoArtApi';
 export default function FavoriteButton({ artwork }: { artwork: Artwork }) {
   const { isFavorite, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
+
   const isCurrentlyFavorite = isFavorite(artwork.id);
 
   const handleClick = () => {
