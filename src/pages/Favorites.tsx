@@ -1,12 +1,13 @@
+import { FavoritesContext } from '@/contexts/FavoritesContext';
 import FavoriteButton from '@/components/FavoriteButton';
-import { useFavorites } from '@hooks/useFavorites';
+import { useContext } from 'react';
 import { Link } from 'react-router';
 
 const IMAGE_OPTIONS = 'full/200,/0/default.jpg';
 const IIIF_URL = 'https://www.artic.edu/iiif/2';
 
 export default function Favorites() {
-  const { favorites } = useFavorites();
+  const { favorites } = useContext(FavoritesContext);
 
   if (favorites.length === 0) {
     return (

@@ -1,7 +1,7 @@
 import { useArtworkFilters } from '@hooks/useArtworkFilters';
-import { MAX_PAGES } from '@constants/chicagoArtApi';
 import { homePageLoader } from '@utils/loaders';
 import { useLoaderData } from 'react-router';
+import { MAX_PAGES } from '@constants/chicagoArtApi';
 
 export default function Pagination() {
   const { totalPages } = useLoaderData<homePageLoader>();

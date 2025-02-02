@@ -29,7 +29,8 @@
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
       "@constants/*": ["src/constants/*"],
-      "@types/*": ["src/types/*"]
+      "@types/*": ["src/types/*"],
+      "@contexts/*": ["src/contexts/*"]
     }
   },
   "include": ["src"],
