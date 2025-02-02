@@ -1,10 +1,10 @@
-import { HomePageLoaderData } from '@/utils/loaders';
-import { useLoaderData } from 'react-router';
 import { useArtworkFilters } from '@hooks/useArtworkFilters';
-import { MAX_PAGES } from '@/constants/chicagoArtApi';
+import { MAX_PAGES } from '@constants/chicagoArtApi';
+import { homePageLoader } from '@utils/loaders';
+import { useLoaderData } from 'react-router';
 
 export default function Pagination() {
-  const { totalPages } = useLoaderData() as HomePageLoaderData;
+  const { totalPages } = useLoaderData<homePageLoader>();
   const { setFilters, page } = useArtworkFilters();
 
   if (totalPages === 0) {
