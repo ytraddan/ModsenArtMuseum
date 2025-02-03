@@ -1,0 +1,112 @@
+@use '@styles/variables' as *;
+
+.artwork-details {
+  width: min(1200px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .back-button {
+    all: unset;
+    cursor: pointer;
+    width: fit-content;
+    color: $color-text;
+    padding: 0.5rem 1.2rem;
+    font-size: 1.2rem;
+    background-color: $color-bg-focus;
+    border: 1px solid $color-primary;
+    border-radius: 0.5rem;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  .artwork-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+
+    .artwork-image-container {
+      position: relative;
+
+      .artwork-image {
+        width: 100%;
+        aspect-ratio: 8/9;
+        object-fit: cover;
+      }
+
+      .favorite-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+    }
+    .artwork-info {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+
+      .artwork-info-header {
+        h1 {
+          font-size: 2rem;
+          font-weight: 600;
+          color: $color-text;
+          line-height: 1.2;
+          margin: 0;
+          padding-bottom: 1rem;
+        }
+
+        .artist {
+          font-size: 1.5rem;
+          color: $color-primary;
+          margin: 0;
+        }
+
+        .date {
+          color: $color-text;
+          font-size: 1rem;
+          line-height: 2;
+          font-weight: bold;
+          margin: 0;
+        }
+      }
+
+      .artwork-info-body {
+        h2 {
+          font-size: 2rem;
+          font-weight: 600;
+          color: $color-text;
+          line-height: 1.2;
+          margin: 0;
+          padding-bottom: 1rem;
+        }
+
+        .details {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          p {
+            font-size: 1.2rem;
+            color: $color-text;
+            margin: 0;
+
+            span {
+              color: $color-primary;
+            }
+          }
+        }
+        .copyright {
+          font-size: 1.2rem;
+          color: $color-text;
+          margin: 0;
+          padding-top: 1rem;
+        }
+      }
+    }
+  }
+}
