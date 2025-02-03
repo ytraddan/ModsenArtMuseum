@@ -1,8 +1,10 @@
+@use '@/styles/variables' as *;
+
 header {
-  background-color: #343333;
+  background-color: $color-bg-dark;
   height: 7rem;
   font-size: 1.2rem;
-  color: #fff;
+  color: $color-white;
 
   .header-container {
     height: 100%;
@@ -30,18 +32,18 @@ header {
 
         &:hover {
           text-decoration: none;
-          color: #c2c2c2;
+          color: $color-text-gray;
         }
       }
     }
 
     a {
       text-decoration: none;
-      color: #fff;
+      color: $color-white;
 
       &:hover {
         text-decoration: underline;
-        color: #fff;
+        color: $color-white;
       }
     }
   }

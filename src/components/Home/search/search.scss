@@ -1,10 +1,12 @@
+@use '@/styles/variables' as *;
+
 .search {
   display: flex;
   gap: 1rem;
   width: 100%;
   position: relative;
   font-size: 1rem;
-  color: #262626;
+  color: $color-text;
 
   .search-input {
     flex: 1;
@@ -13,17 +15,19 @@
     input {
       width: 100%;
       padding: 1.2rem;
-      border: 1px solid #f0f0f0;
+      border: 1px solid $color-bg-light;
       border-radius: 1rem;
       color: inherit;
       font-size: inherit;
-      background-color: #f0f0f0;
-      transition: all 0.2s ease;
+      background-color: $color-bg-light;
+      transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
 
       &:focus {
         outline: none;
-        border-color: #e0a449;
-        background-color: #f3f3f3;
+        border-color: $color-primary;
+        background-color: $color-bg-focus;
       }
 
       &::placeholder {
@@ -40,19 +44,21 @@
   }
 
   select {
-    padding: 1rem 1rem;
+    padding: 1rem;
     font-size: inherit;
-    border: 1px solid #f0f0f0;
+    border: 1px solid $color-bg-light;
     border-radius: 1rem;
-    color: inherit;
-    background-color: #f0f0f0;
+    color: $color-text;
+    background-color: $color-bg-light;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
 
     &:focus {
       outline: none;
-      border-color: #e0a449;
-      background-color: #f3f3f3;
+      border-color: $color-primary;
+      background-color: $color-bg-focus;
     }
 
     &:disabled {
@@ -66,5 +72,6 @@
     bottom: -2rem;
     left: 1rem;
     color: rgb(237, 117, 117);
+    font-size: 0.9rem;
   }
 }

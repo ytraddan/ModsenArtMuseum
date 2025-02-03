@@ -1,5 +1,8 @@
+$color-bg: #f0f0f0;
+$color-bg-focus: #f3f3f3;
+
 .favorite-button {
-  background-color: #f9f9f9;
+  background-color: #f6f6f6;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -11,6 +14,6 @@
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #fef3e8;
+    background-color: $color-bg;
   }
 }

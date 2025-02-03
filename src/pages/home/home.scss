@@ -1,3 +1,5 @@
+@use '@/styles/variables' as *;
+
 .home {
   display: flex;
   flex-direction: column;
@@ -12,26 +14,20 @@
 
     h1 {
       font-size: 4rem;
-      color: #393939;
+      margin-top: 0;
+      margin-bottom: 5rem;
+      color: $color-text;
       text-align: center;
 
       .highlighted {
-        color: #f17900;
+        color: $color-secondary;
       }
     }
   }
 
-  .artworks-container {
-    height: 700px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6rem;
-  }
-
   .home-content {
+    width: min(1400px, 100%);
     display: flex;
     flex-direction: column;
-    width: min(1400px, 100%);
   }
 }

@@ -1,35 +1,44 @@
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigation } from 'react-router';
+import { Link } from 'react-router';
 import { homePageLoader } from '@utils/loaders';
 import FavoriteButton from '@components/favoriteButton/FavoriteButton';
-import { type Artwork } from '@/services/api/chicagoArtApi';
-import { Link } from 'react-router';
+import { type Artwork as ArtworkType } from '@/services/api/chicagoArtApi';
 import './artworks.scss';
 
 const IMAGE_OPTIONS = 'full/400,/0/default.jpg';
 
 export default function Artworks() {
   const { artworks, iiifUrl } = useLoaderData<homePageLoader>();
+  const navigation = useNavigation();
+
+  if (navigation.state === 'loading') {
+    return <LoadingGrid />;
+  }
 
   if (artworks.length === 0) {
-    return <h2 className="no-artworks">No artworks found</h2>;
+    return <NoResults />;
   }
 
   return (
     <div className="artworks">
       {artworks.map((artwork) => (
-        <Artwork key={artwork.id} artwork={artwork} iiifUrl={iiifUrl} />
+        <ArtworkCard key={artwork.id} artwork={artwork} iiifUrl={iiifUrl} />
       ))}
     </div>
   );
 }
 
-function Artwork({ artwork, iiifUrl }: { artwork: Artwork; iiifUrl: string }) {
+interface ArtworkCardProps {
+  artwork: ArtworkType;
+  iiifUrl: string;
+}
+
+function ArtworkCard({ artwork, iiifUrl }: ArtworkCardProps) {
   return (
     <div className="artwork">
       <Link to={`/artwork/${artwork.id}`}>
         <img
           src={`${iiifUrl}/${artwork.image_id}/${IMAGE_OPTIONS}`}
-          alt={artwork.title || 'Untitled'}
           className="artwork-image"
         />
       </Link>
@@ -42,10 +51,30 @@ function Artwork({ artwork, iiifUrl }: { artwork: Artwork; iiifUrl: string }) {
           {artwork.artist_title || 'Unknown Artist'}
         </p>
         <p className="copyright">
-          {artwork.is_public_domain ? 'Public ' : 'Copyrighted'}
+          {artwork.is_public_domain ? 'Public Domain' : 'Copyrighted'}
         </p>
 
         <FavoriteButton artwork={artwork} />
+      </div>
+    </div>
+  );
+}
+
+function LoadingGrid() {
+  return (
+    <div className="artworks">
+      {Array.from({ length: 3 }).map((_, index) => (
+        <div key={index} className="image-skeleton" />
+      ))}
+    </div>
+  );
+}
+
+function NoResults() {
+  return (
+    <div className="artworks">
+      <div className="no-artworks">
+        <h2>No artworks found</h2>
       </div>
     </div>
   );
