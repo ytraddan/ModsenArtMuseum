@@ -22,6 +22,11 @@
       .highlighted {
         color: $color-secondary;
       }
+
+      @include mobile {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
     }
   }
 

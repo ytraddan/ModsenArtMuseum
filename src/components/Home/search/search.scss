@@ -74,4 +74,21 @@
     color: rgb(237, 117, 117);
     font-size: 0.9rem;
   }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .search-input {
+      input {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    select {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+  }
 }

@@ -15,3 +15,11 @@ $color-white: #fff;
 
 // UI Colors
 $color-shadow: rgba(0, 0, 0, 0.128);
+
+$mobile-breakpoint: 360px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile-breakpoint}) {
+    @content;
+  }
+}

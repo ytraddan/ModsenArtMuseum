@@ -10,16 +10,16 @@
     all: unset;
     cursor: pointer;
     width: fit-content;
-    color: $color-text;
     padding: 0.5rem 1.2rem;
+    background-color: $color-primary;
+    color: $color-white;
     font-size: 1.2rem;
-    background-color: $color-bg-focus;
-    border: 1px solid $color-primary;
+    text-decoration: none;
     border-radius: 0.5rem;
-    transition: color 0.2s ease;
+    transition: background-color 0.2s ease;
 
     &:hover {
-      color: $color-primary;
+      background-color: $color-secondary;
     }
   }
 
@@ -105,6 +105,53 @@
           color: $color-text;
           margin: 0;
           padding-top: 1rem;
+        }
+      }
+    }
+  }
+
+  @include mobile {
+    padding: 0 0;
+
+    .back-button {
+      font-size: 1rem;
+      padding: 0.4rem 1rem;
+    }
+    .artwork-content {
+      grid-template-columns: 1fr;
+      gap: 0rem;
+
+      .artwork-info {
+        .artwork-info-header {
+          h1 {
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+          }
+
+          .date {
+            line-height: 1.3;
+          }
+
+          .artist {
+            font-size: 1.2rem;
+          }
+        }
+
+        .artwork-info-body {
+          h2 {
+            font-size: 1.5rem;
+          }
+
+          .details {
+            gap: 0.2rem;
+            p {
+              font-size: 1rem;
+            }
+          }
+
+          .copyright {
+            font-size: 1rem;
+          }
         }
       }
     }

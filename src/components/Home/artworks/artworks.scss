@@ -96,7 +96,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 20ch;
+        max-width: 75%;
       }
 
       .copyright {
@@ -112,6 +112,34 @@
         transform: translateY(-50%);
         right: 1.5rem;
         top: 50%;
+      }
+    }
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+
+    .artwork {
+      .artwork-info {
+        width: 70%;
+
+        .artwork-title {
+          font-size: 1rem;
+          max-width: 70%;
+        }
+
+        .artist-title {
+          font-size: 0.9rem;
+          max-width: 70%;
+        }
+
+        .copyright {
+          font-size: 0.9rem;
+          padding-top: 0.8rem;
+        }
       }
     }
   }

@@ -1,3 +1,5 @@
+@use '@styles/variables.scss' as *;
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -13,5 +15,10 @@
     margin: 8rem auto;
     padding: 0 2rem;
     box-sizing: border-box;
+
+    @include mobile {
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
   }
 }

@@ -46,5 +46,9 @@ header {
         color: $color-white;
       }
     }
+
+    @include mobile {
+      padding: 0 1rem;
+    }
   }
 }

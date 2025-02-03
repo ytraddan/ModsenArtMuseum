@@ -8,11 +8,11 @@ export default function Layout() {
   return (
     <div className="layout">
       <Header />
-      <FavoritesProvider>
-        <main>
+      <main>
+        <FavoritesProvider>
           <Outlet />
-        </main>
-      </FavoritesProvider>
+        </FavoritesProvider>
+      </main>
       <Footer />
     </div>
   );

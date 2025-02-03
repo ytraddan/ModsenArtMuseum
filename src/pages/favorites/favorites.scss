@@ -121,7 +121,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 75%;
+            max-width: 100%;
             transition: color 0.2s ease;
 
             &:hover {
@@ -137,7 +137,7 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          max-width: 20ch;
+          max-width: 100%;
         }
 
         .copyright {
@@ -146,6 +146,60 @@
           font-weight: bold;
           padding-top: 1rem;
           margin: 0;
+        }
+      }
+    }
+  }
+
+  @include mobile {
+    padding-bottom: 2rem;
+
+    .favorites-header {
+      gap: 1rem;
+
+      h1 {
+        font-size: 2rem;
+
+        .highlight {
+          gap: 0.2rem;
+
+          img {
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+      }
+
+      .favorites-header-text {
+        .subtitle {
+          font-size: 1rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .favorites-grid {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      .favorite-item {
+        .artwork-info {
+          width: 70%;
+
+          h3 {
+            font-size: 1rem;
+          }
+
+          .artist {
+            font-size: 0.9rem;
+          }
+
+          .copyright {
+            padding-top: 0.5rem;
+            font-size: 0.9rem;
+          }
         }
       }
     }
@@ -185,6 +239,19 @@
 
     &:hover {
       background-color: $color-primary;
+    }
+  }
+
+  @include mobile {
+    padding: 2rem 1rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .back-link {
+      font-size: 1rem;
+      padding: 0.6rem 1.4rem;
     }
   }
 }
