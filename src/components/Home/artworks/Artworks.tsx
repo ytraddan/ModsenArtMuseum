@@ -5,7 +5,7 @@ import FavoriteButton from '@components/favoriteButton/FavoriteButton';
 import { type Artwork as ArtworkType } from '@/services/api/chicagoArtApi';
 import './artworks.scss';
 
-const IMAGE_OPTIONS = 'full/400,/0/default.jpg';
+const IMAGE_OPTIONS = 'full/843,/0/default.jpg';
 
 export default function Artworks() {
   const { artworks, iiifUrl } = useLoaderData<homePageLoader>();

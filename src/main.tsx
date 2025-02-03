@@ -3,7 +3,7 @@ import { homePageLoader, artworkPageLoader } from '@utils/loaders';
 import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
 import ArtworkDetails from '@pages/artworkDetails/ArtworkDetails';
-import Favorites from '@pages/Favorites';
+import Favorites from '@/pages/favorites/Favorites';
 import Loading from '@/components/loading/Loading';
 import Layout from '@components/layout/Layout';
 import Error from '@pages/Error';
