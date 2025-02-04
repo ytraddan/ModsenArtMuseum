@@ -56,7 +56,7 @@ export default function ArtworkDetails() {
               </p>
             </div>
             <p className="copyright">
-              {artwork.is_public_domain ? 'Public Domain' : 'Copyrighted'}
+              {artwork.is_public_domain ? 'Public' : 'Copyrighted'}
             </p>
           </div>
         </div>
