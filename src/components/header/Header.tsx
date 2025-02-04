@@ -7,17 +7,18 @@ import menu from '@assets/menu.svg';
 import close from '@assets/close.svg';
 import './header.scss';
 
-const NavigationLinks = () => {
+const NavigationLinks = ({ onNavigate }: { onNavigate?: () => void }) => {
   const { pathname } = useLocation();
+
   return (
     <>
       {pathname !== '/' && (
-        <NavLink className="nav-link" to="/">
+        <NavLink className="nav-link" to="/" onClick={onNavigate}>
           <img src={home} alt="Home" />
           <span>Home</span>
         </NavLink>
       )}
-      <NavLink className="nav-link" to="/favorites">
+      <NavLink className="nav-link" to="/favorites" onClick={onNavigate}>
         <img src={bookmark} alt="Favorite" />
         <span>Your Favorites</span>
       </NavLink>
@@ -27,6 +28,10 @@ const NavigationLinks = () => {
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="header">
@@ -51,7 +56,7 @@ export default function Header() {
 
         {isMenuOpen && (
           <nav className="mobile-nav" data-testid="mobile-nav">
-            <NavigationLinks />
+            <NavigationLinks onNavigate={handleCloseMenu} />
           </nav>
         )}
       </div>
