@@ -1,5 +1,5 @@
-import Pagination from '@/components/home/pagination/Pagination';
-import Artworks from '@/components/home/artworks/Artworks';
+import Pagination from '@components/home/pagination/Pagination';
+import Artworks from '@components/home/artworks/Artworks';
 import Search from '@components/home/search/Search';
 import './home.scss';
 
