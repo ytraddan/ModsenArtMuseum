@@ -50,7 +50,7 @@ export default function Header() {
         </nav>
 
         {isMenuOpen && (
-          <nav className="mobile-nav">
+          <nav className="mobile-nav" data-testid="mobile-nav">
             <NavigationLinks />
           </nav>
         )}

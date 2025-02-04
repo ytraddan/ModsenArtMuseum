@@ -7,15 +7,27 @@ export default {
         jsc: {
           transform: {
             react: {
-              runtime: 'automatic', // Automatically injects React
+              runtime: 'automatic',
             },
           },
         },
       },
     ],
   },
-  moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
-  },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  moduleNameMapper: {
+    '\\.(css|scss|sass)$': '<rootDir>/src/mocks/styleMock.ts',
+    '\\.(svg)$': '<rootDir>/src/mocks/svgMock.ts',
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^@components/(.*)$': '<rootDir>/src/components/$1',
+    '^@pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@assets/(.*)$': '<rootDir>/src/assets/$1',
+    '^@services/(.*)$': '<rootDir>/src/services/$1',
+    '^@utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^@constants/(.*)$': '<rootDir>/src/constants/$1',
+    '^@types/(.*)$': '<rootDir>/src/types/$1',
+    '^@contexts/(.*)$': '<rootDir>/src/contexts/$1',
+    '^@styles/(.*)$': '<rootDir>/src/styles/$1',
+  },
 };
