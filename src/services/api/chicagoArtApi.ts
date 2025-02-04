@@ -47,7 +47,9 @@ interface FetchArtworksParams {
 }
 
 // Fetches filtered artworks
-export async function fetchArtworks(params: FetchArtworksParams) {
+export async function fetchArtworks(
+  params: FetchArtworksParams
+): Promise<ArtworksResponse> {
   const queryParams = buildQueryParams(params);
   const response = await fetch(`${BASE_URL}/artworks/search?${queryParams}`);
 
@@ -55,13 +57,14 @@ export async function fetchArtworks(params: FetchArtworksParams) {
     throw new Response('API request failed', { status: response.status });
   }
 
-  return (await response.json()) as ArtworksResponse;
+  return await response.json();
 }
 
 // Fetches artwork details
-export async function fetchArtworkDetails(artworkId: string, fields: string) {
-  console.log(`${BASE_URL}/artworks/${artworkId}?fields=${fields}`);
-
+export async function fetchArtworkDetails(
+  artworkId: string,
+  fields: string
+): Promise<ArtworkDetailsResponse> {
   const response = await fetch(
     `${BASE_URL}/artworks/${artworkId}?fields=${fields}`
   );
@@ -70,7 +73,7 @@ export async function fetchArtworkDetails(artworkId: string, fields: string) {
     throw new Response('API request failed', { status: response.status });
   }
 
-  return (await response.json()) as ArtworkDetailsResponse;
+  return await response.json();
 }
 
 // Constructs URL search parameters based on filters
