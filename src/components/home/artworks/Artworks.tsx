@@ -60,17 +60,21 @@ function ArtworkCard({ artwork, iiifUrl }: ArtworkCardProps) {
   );
 }
 
-function LoadingGrid() {
+export function LoadingGrid() {
   return (
     <div className="artworks">
       {Array.from({ length: 3 }).map((_, index) => (
-        <div key={index} className="image-skeleton" />
+        <div
+          key={index}
+          className="image-skeleton"
+          data-testid="loading-skeleton"
+        />
       ))}
     </div>
   );
 }
 
-function NoResults() {
+export function NoResults() {
   return (
     <div className="artworks">
       <div className="no-artworks">
