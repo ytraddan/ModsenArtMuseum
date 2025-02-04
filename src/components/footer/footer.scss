@@ -1,0 +1,41 @@
+@use '@/styles/variables' as *;
+
+.footer {
+  padding: 1rem 0;
+  background-color: #fff;
+  font-size: 1.2rem;
+
+  .logo {
+    width: min(1400px, 100%);
+    margin: 0 auto;
+    display: flex;
+    align-items: end;
+    gap: 0.5rem;
+
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    span {
+      font-size: 1.2rem;
+    }
+  }
+
+  @include mobile {
+    font-size: 1rem;
+
+    .logo {
+      padding: 0 1.5rem;
+
+      img {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
+}
