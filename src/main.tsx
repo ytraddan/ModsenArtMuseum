@@ -2,12 +2,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import { homePageLoader, artworkPageLoader } from '@utils/loaders';
 import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
-import ArtworkDetails from '@pages/ArtworkDetails';
-import Favorites from '@pages/Favorites';
-import Loading from '@components/Loading';
-import Layout from '@components/Layout';
+import ArtworkDetails from '@pages/artworkDetails/ArtworkDetails';
+import Favorites from '@/pages/favorites/Favorites';
+import Loading from '@/components/loading/Loading';
+import Layout from '@components/layout/Layout';
 import Error from '@pages/Error';
-import Home from '@pages/Home';
+import Home from '@pages/home/Home';
+import '@styles/index.scss';
 
 const router = createBrowserRouter([
   {

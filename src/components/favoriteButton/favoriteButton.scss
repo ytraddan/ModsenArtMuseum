@@ -1,0 +1,18 @@
+$color-bg: #f0f0f0;
+$color-bg-focus: #f3f3f3;
+
+.favorite-button {
+  background-color: #f6f6f6;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $color-bg;
+  }
+}

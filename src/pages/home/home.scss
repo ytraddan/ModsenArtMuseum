@@ -1,0 +1,38 @@
+@use '@/styles/variables' as *;
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .home-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(1000px, 100%);
+
+    h1 {
+      font-size: 4rem;
+      margin-top: 0;
+      margin-bottom: 5rem;
+      color: $color-text;
+      text-align: center;
+
+      .highlighted {
+        color: $color-secondary;
+      }
+
+      @include mobile {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  .home-content {
+    width: min(1400px, 100%);
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,6 +1,9 @@
 import { FavoritesContext } from '@/contexts/FavoritesContext';
-import { useContext } from 'react';
 import { Artwork } from '@/services/api/chicagoArtApi';
+import { useContext } from 'react';
+import bookmark from '@assets/bookmark.svg';
+import './favoriteButton.scss';
+import bookmarkFilled from '@assets/bookmark-filled.svg';
 
 export default function FavoriteButton({ artwork }: { artwork: Artwork }) {
   const { isFavorite, addFavorite, removeFavorite } =
@@ -17,8 +20,12 @@ export default function FavoriteButton({ artwork }: { artwork: Artwork }) {
   };
 
   return (
-    <button onClick={handleClick}>
-      {isCurrentlyFavorite ? '❤️ Remove from Favorites' : '🤍 Add to Favorites'}
+    <button className="favorite-button" onClick={handleClick}>
+      {isCurrentlyFavorite ? (
+        <img src={bookmarkFilled} alt="bookmark" />
+      ) : (
+        <img src={bookmark} alt="bookmark" />
+      )}
     </button>
   );
 }
