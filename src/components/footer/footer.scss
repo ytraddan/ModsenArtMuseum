@@ -1,18 +1,13 @@
 @use '@/styles/variables' as *;
 
 .footer {
-  padding: 1rem;
+  padding: 1rem 0;
   background-color: #fff;
-  text-align: center;
-  margin-top: auto;
-  height: 5rem;
   font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
 
   .logo {
-    padding: 0 10rem;
+    width: min(1400px, 100%);
+    margin: 0 auto;
     display: flex;
     align-items: end;
     gap: 0.5rem;
@@ -28,9 +23,7 @@
   }
 
   @include mobile {
-    height: 4rem;
     font-size: 1rem;
-    padding: 0.5rem;
 
     .logo {
       padding: 0 1.5rem;

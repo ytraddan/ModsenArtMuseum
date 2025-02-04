@@ -1,7 +1,8 @@
 @use '@/styles/variables' as *;
 
 .favorites {
-  width: min(1200px, 100%);
+  width: min(1400px, 100%);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -62,7 +63,7 @@
   .favorites-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 2rem;
+    column-gap: 3rem;
     row-gap: 5rem;
 
     .favorite-item {
