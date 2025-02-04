@@ -6,7 +6,7 @@ import ArtworkDetails from '@pages/artworkDetails/ArtworkDetails';
 import Favorites from '@/pages/favorites/Favorites';
 import Loading from '@/components/loading/Loading';
 import Layout from '@components/layout/Layout';
-import Error from '@pages/Error';
+import Error from '@/pages/error/Error';
 import Home from '@pages/home/Home';
 import '@styles/index.scss';
 
