@@ -41,4 +41,19 @@ describe('Header', () => {
 
     expect(screen.queryByText('Home')).not.toBeInTheDocument();
   });
+
+  it('should close mobile menu when clicking outside', () => {
+    render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    );
+
+    const burgerButton = screen.getByRole('button');
+    fireEvent.click(burgerButton);
+    expect(screen.queryByTestId('mobile-nav')).toBeInTheDocument();
+
+    fireEvent.mouseDown(document.body);
+    expect(screen.queryByTestId('mobile-nav')).not.toBeInTheDocument();
+  });
 });
