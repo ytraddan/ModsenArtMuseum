@@ -1,8 +1,9 @@
-import { FavoritesContext } from '@/contexts/FavoritesContext';
 import FavoriteButton from '@components/favoriteButton/FavoriteButton';
+import { FavoritesContext } from '@contexts/FavoritesContext';
 import { useContext } from 'react';
 import { Link } from 'react-router';
 import bookmark from '@assets/bookmark.svg';
+import { ROUTES } from '@constants/routes';
 import './favorites.scss';
 
 const IMAGE_OPTIONS = 'full/843,/0/default.jpg';
@@ -21,7 +22,7 @@ export default function Favorites() {
           <h1>Browse the gallery to add some!</h1>
         </div>
 
-        <Link to="/" className="back-link">
+        <Link to={ROUTES.HOME} className="back-link">
           Go to Gallery
         </Link>
       </div>
@@ -48,7 +49,7 @@ export default function Favorites() {
         {favorites.map((artwork) => (
           <div key={artwork.id} className="favorite-item">
             <div className="image-container">
-              <Link to={`/artwork/${artwork.id}`}>
+              <Link to={ROUTES.ARTWORK_BY_ID(artwork.id)}>
                 <img
                   src={`${IIIF_URL}/${artwork.image_id}/${IMAGE_OPTIONS}`}
                   alt={artwork.title}
@@ -58,7 +59,7 @@ export default function Favorites() {
             </div>
 
             <div className="artwork-info">
-              <Link to={`/artwork/${artwork.id}`}>
+              <Link to={ROUTES.ARTWORK_BY_ID(artwork.id)}>
                 <h3>{artwork.title || 'Untitled'}</h3>
               </Link>
               <p className="artist">{artwork.artist_title || 'Unknown'}</p>

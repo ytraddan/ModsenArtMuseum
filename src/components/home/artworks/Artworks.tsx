@@ -1,8 +1,9 @@
-import { useLoaderData, useNavigation } from 'react-router';
-import { Link } from 'react-router';
-import { homePageLoader } from '@utils/loaders';
+import { type Artwork as ArtworkType } from '@services/api/chicagoArtApi';
 import FavoriteButton from '@components/favoriteButton/FavoriteButton';
-import { type Artwork as ArtworkType } from '@/services/api/chicagoArtApi';
+import { useLoaderData, useNavigation } from 'react-router';
+import { homePageLoader } from '@routes/loaders';
+import { ROUTES } from '@constants/routes';
+import { Link } from 'react-router';
 import './artworks.scss';
 
 const IMAGE_OPTIONS = 'full/843,/0/default.jpg';
@@ -36,7 +37,7 @@ interface ArtworkCardProps {
 function ArtworkCard({ artwork, iiifUrl }: ArtworkCardProps) {
   return (
     <div className="artwork">
-      <Link to={`/artwork/${artwork.id}`}>
+      <Link to={ROUTES.ARTWORK_BY_ID(artwork.id)}>
         <img
           src={`${iiifUrl}/${artwork.image_id}/${IMAGE_OPTIONS}`}
           className="artwork-image"
@@ -44,7 +45,7 @@ function ArtworkCard({ artwork, iiifUrl }: ArtworkCardProps) {
       </Link>
 
       <div className="artwork-info">
-        <Link to={`/artwork/${artwork.id}`}>
+        <Link to={ROUTES.ARTWORK_BY_ID(artwork.id)}>
           <p className="artwork-title">{artwork.title || 'Untitled'}</p>
         </Link>
         <p className="artist-title">

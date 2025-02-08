@@ -1,4 +1,5 @@
 import { NavLink, useLocation } from 'react-router';
+import { ROUTES } from '@constants/routes';
 import { useState } from 'react';
 import bookmark from '@assets/bookmark-header.svg';
 import home from '@assets/home.svg';
@@ -12,13 +13,13 @@ const NavigationLinks = ({ onNavigate }: { onNavigate?: () => void }) => {
 
   return (
     <>
-      {pathname !== '/' && (
-        <NavLink className="nav-link" to="/" onClick={onNavigate}>
+      {pathname !== ROUTES.HOME && (
+        <NavLink className="nav-link" to={ROUTES.HOME} onClick={onNavigate}>
           <img src={home} alt="Home" />
           <span>Home</span>
         </NavLink>
       )}
-      <NavLink className="nav-link" to="/favorites" onClick={onNavigate}>
+      <NavLink className="nav-link" to={ROUTES.FAVORITES} onClick={onNavigate}>
         <img src={bookmark} alt="Favorite" />
         <span>Your Favorites</span>
       </NavLink>
