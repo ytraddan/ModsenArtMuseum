@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from '@testing-library/react';
-import { FavoritesContext } from '@/contexts/FavoritesContext';
+import { FavoritesContext } from '@contexts/FavoritesContext';
 import FavoriteButton from '@components/favoriteButton/FavoriteButton';
 
 const mockArtwork = {

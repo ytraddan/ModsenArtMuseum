@@ -2,7 +2,7 @@ import { RouterProvider, createMemoryRouter } from 'react-router';
 import { useArtworkFilters } from '@hooks/useArtworkFilters';
 import { render, screen } from '@testing-library/react';
 import { ROUTES } from '@constants/routes';
-import Pagination from './Pagination';
+import Pagination from '@components/home/pagination/Pagination';
 
 jest.mock('@hooks/useArtworkFilters');
 jest.mock('react-router', () => ({

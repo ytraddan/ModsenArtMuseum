@@ -1,7 +1,7 @@
-import { render, fireEvent, screen } from '@testing-library/react';
-import { useContext } from 'react';
 import FavoritesProvider from '@components/providers/FavoritesProvider';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { FavoritesContext } from '@contexts/FavoritesContext';
+import { useContext } from 'react';
 
 const mockArtwork = {
   id: 1,
