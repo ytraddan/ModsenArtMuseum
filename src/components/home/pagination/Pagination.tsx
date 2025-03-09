@@ -1,5 +1,5 @@
 import { useArtworkFilters } from '@hooks/useArtworkFilters';
-import { homePageLoader } from '@utils/loaders';
+import { homePageLoader } from '@/routes/loaders';
 import { useLoaderData } from 'react-router';
 import { MAX_PAGES } from '@constants/chicagoArtApi';
 import './pagination.scss';

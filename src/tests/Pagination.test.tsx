@@ -1,7 +1,8 @@
-import { render, screen } from '@testing-library/react';
 import { RouterProvider, createMemoryRouter } from 'react-router';
-import Pagination from './Pagination';
 import { useArtworkFilters } from '@hooks/useArtworkFilters';
+import { render, screen } from '@testing-library/react';
+import { ROUTES } from '@constants/routes';
+import Pagination from '@components/home/pagination/Pagination';
 
 jest.mock('@hooks/useArtworkFilters');
 jest.mock('react-router', () => ({
@@ -22,7 +23,7 @@ describe('Pagination', () => {
   const renderPagination = () => {
     const routes = [
       {
-        path: '/',
+        path: ROUTES.HOME,
         element: <Pagination />,
       },
     ];

@@ -1,7 +1,7 @@
-import { renderHook, act } from '@testing-library/react';
-import { waitFor } from '@testing-library/react';
 import { useArtworkFilters } from '@hooks/useArtworkFilters';
 import { MemoryRouter, useSearchParams } from 'react-router';
+import { renderHook, act } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import { ReactNode } from 'react';
 
 function TestComponent({ onSearch }: { onSearch: (search: string) => void }) {

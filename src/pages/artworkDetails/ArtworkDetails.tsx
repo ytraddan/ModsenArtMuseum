@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router';
-import { artworkPageLoader } from '@utils/loaders';
+import { artworkPageLoader } from '@/routes/loaders';
 import FavoriteButton from '@components/favoriteButton/FavoriteButton';
 import { useNavigate } from 'react-router';
 import './artworkDetails.scss';

@@ -16,8 +16,8 @@ export default {
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
-    '\\.(css|scss|sass)$': '<rootDir>/src/mocks/styleMock.ts',
-    '\\.(svg)$': '<rootDir>/src/mocks/svgMock.ts',
+    '\\.(css|scss|sass)$': '<rootDir>/src/tests/mocks/styleMock.ts',
+    '\\.(svg)$': '<rootDir>/src/tests/mocks/svgMock.ts',
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
